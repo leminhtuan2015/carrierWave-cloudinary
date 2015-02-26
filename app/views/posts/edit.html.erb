@@ -1,0 +1,13 @@
+<h1>Editing Post</h1>
+
+<%= form_for(@post, :html => { :multipart => true }) do |f| %>
+   <%= f.label :title %><br>
+   <%= f.text_field :title %>
+   <%= f.fields_for :post_attachments do |post_attachment| %>
+     <%= post_attachment.file_field :avatar, :multiple => true, name: "post_attachments[avatar][]" %>
+   <% end %>
+   <%= f.submit %>
+<% end %>
+
+<%= link_to 'Show', @post %> |
+<%= link_to 'Back', posts_path %>
